@@ -1,20 +1,30 @@
 package br.dio.com.collections;
 
+import com.sun.jdi.InvalidLineNumberException;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
 public class ExercicioTemperatura {
     public static void main(String[] args) {
         List<Mes> temperaturaDoMes = new ArrayList<>(){{
-
-                add(new Mes(1, "Janeiro", JOptionPane.showInputDialog("Insira a temperatura de Janeiro: ")));
-                add(new Mes(2, "Fevereiro", JOptionPane.showInputDialog("Insira a temperatura de Fevereiro: ")));
-                add(new Mes(3, "Março", JOptionPane.showInputDialog("Insira a temperatura de Março: ")));
-                add(new Mes(4, "Abriu", JOptionPane.showInputDialog("Insira a temperatura de Abriu: ")));
-                add(new Mes(5, "JUnho", JOptionPane.showInputDialog("Insira a temperatura de Junho: ")));
-                add(new Mes(6, "Julho", JOptionPane.showInputDialog("Insira a temperatura de Julho: ")));
+                boolean opcao = false;
+                while (!opcao) {
+                    try {
+                        add(new Mes(1, "Janeiro", JOptionPane.showInputDialog("Insira a temperatura de Janeiro: ")));
+                        add(new Mes(2, "Fevereiro", JOptionPane.showInputDialog("Insira a temperatura de Fevereiro: ")));
+                        add(new Mes(3, "Março", JOptionPane.showInputDialog("Insira a temperatura de Março: ")));
+                        add(new Mes(4, "Abriu", JOptionPane.showInputDialog("Insira a temperatura de Abriu: ")));
+                        add(new Mes(5, "JUnho", JOptionPane.showInputDialog("Insira a temperatura de Junho: ")));
+                        add(new Mes(6, "Julho", JOptionPane.showInputDialog("Insira a temperatura de Julho: ")));
+                        opcao = true;
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Entrada invalida digite um numero inteiro");
+                    }
+                }
 
         }};
 
@@ -32,6 +42,7 @@ public class ExercicioTemperatura {
 
         double media = soma/temperaturaDoMes.size();
         Iterator<Mes> iterator2 = temperaturaDoMes.iterator();
+
         while (iterator2.hasNext()){
             Mes next = iterator2.next();
 
